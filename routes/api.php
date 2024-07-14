@@ -16,5 +16,5 @@ Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanct
 
 //Provides all REST API routes for /api/presidents requires token for access
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('presidents', PresidentController::class);
+    Route::apiResource('presidents', PresidentController::class)->middleware(["throttle:api"]);
 });
